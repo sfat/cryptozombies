@@ -19,7 +19,7 @@
  */
 
 const HDWalletProvider = require('@truffle/hdwallet-provider');
-const LoomTruffleProvider = require('loom-truffle-provider');
+
 const fs = require('fs');
 const mnemonic = fs.readFileSync(".secret").toString().trim();
 
@@ -74,20 +74,6 @@ module.exports = {
       },
       network_id: "1"
     },
-    // Configuration for Loom Testnet
-    loom_testnet: {
-      provider: function() {
-        const privateKey = 'YOUR_PRIVATE_KEY';
-        const chainId = 'extdev-plasma-us1';
-        const writeUrl = 'wss://extdev-basechain-us1.dappchains.com/websocket';
-        const readUrl = 'wss://extdev-basechain-us1.dappchains.com/queryws';
-
-        const loomTruffleProvider = new LoomTruffleProvider(chainId, writeUrl, readUrl, privateKey);
-        loomTruffleProvider.createExtraAccountsFromMnemonic(mnemonic, 10);
-        return loomTruffleProvider;
-      },
-      network_id: '9545242630824'
-    }
     // rinkeby: {
     //   provider: () => new HDWalletProvider(mnemonic, `https://rinkeby.infura.io/v3/YOU_PROJECT_ID_HERE`),
     //   network_id: 4,       // Ropsten's id

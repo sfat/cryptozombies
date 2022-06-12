@@ -3,3 +3,5 @@
 node_modules/
 build
 lesson-10/CryptoZombies/.secret
+lesson-15/EthPriceOracle/caller/caller_private_key
+lesson-15/EthPriceOracle/oracle/oracle_private_key

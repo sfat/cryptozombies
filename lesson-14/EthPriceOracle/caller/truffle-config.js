@@ -18,10 +18,10 @@
  *
  */
 
-const HDWalletProvider = require('@truffle/hdwallet-provider');
-const LoomTruffleProvider = require('loom-truffle-provider');
-const fs = require('fs');
-const mnemonic = fs.readFileSync(".secret").toString().trim();
+// const HDWalletProvider = require('@truffle/hdwallet-provider');
+//
+// const fs = require('fs');
+// const mnemonic = fs.readFileSync(".secret").toString().trim();
 
 module.exports = {
   /**
@@ -59,38 +59,9 @@ module.exports = {
     //
     // Useful for deploying to a public network.
     // Note: It's important to wrap the provider as a function to ensure truffle uses a new provider every time.
-    ropsten: {
-      provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/YOU_PROJECT_ID_HERE`),
-      network_id: 3,       // Ropsten's id
-      gas: 5500000,        // Ropsten has a lower block limit than mainnet
-      confirmations: 2,    // # of confirmations to wait between deployments. (default: 0)
-      timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
-      skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
-    },
-    mainnet: {
-      provider: function () {
-        // Setting the provider with the Infura Mainnet address and Token
-        return new HDWalletProvider(mnemonic, "https://mainnet.infura.io/v3/YOU_PROJECT_ID_HERE")
-      },
-      network_id: "1"
-    },
-    // Configuration for Loom Testnet
-    loom_testnet: {
-      provider: function() {
-        const privateKey = 'YOUR_PRIVATE_KEY';
-        const chainId = 'extdev-plasma-us1';
-        const writeUrl = 'wss://extdev-basechain-us1.dappchains.com/websocket';
-        const readUrl = 'wss://extdev-basechain-us1.dappchains.com/queryws';
-
-        const loomTruffleProvider = new LoomTruffleProvider(chainId, writeUrl, readUrl, privateKey);
-        loomTruffleProvider.createExtraAccountsFromMnemonic(mnemonic, 10);
-        return loomTruffleProvider;
-      },
-      network_id: '9545242630824'
-    }
-    // rinkeby: {
-    //   provider: () => new HDWalletProvider(mnemonic, `https://rinkeby.infura.io/v3/YOU_PROJECT_ID_HERE`),
-    //   network_id: 4,       // Ropsten's id
+    // ropsten: {
+    //   provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/YOUR-PROJECT-ID`),
+    //   network_id: 3,       // Ropsten's id
     //   gas: 5500000,        // Ropsten has a lower block limit than mainnet
     //   confirmations: 2,    // # of confirmations to wait between deployments. (default: 0)
     //   timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
